@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pokemon JS</title>
+<link rel="stylesheet" href="assets/css/gameboy.css" />
+</head>
+
+<body onload="buildTraps();">
+
+
+<label id="message" style="color:black;">Poke-Code</label>
+<p>
+<!--
+	<button id="chkPos" onclick="checkPosition()">where m i?</button>
+	<button id="chkAllTraps" onclick="checkTraps()">TRAPS</button>
+	<button id="levelTwoBtn" style="visibility:hidden" onclick="levelTwo()">Level 2</button>
+-->
+<button id="resetBtn" onclick="resetPosition()">Reset</button>
+
+</p> 
+
+<table border="1">
+	<tr>
+		<td>
+			<div id ="container">
+				<div id ="animate" style="left:0px;top:0px;"><img id="sourceImg" src="assets/img/Pokeball.png" width="50px" height="50px" /></div>
+				
+				<div id="walls"></div>
+				
+				<div id="destination" style="left:50px;top:50px;">
+						<img id ="destImg" src="assets/img/Squirtle.png" width="250px" height="250px" onclick="changeSize('50px','50px');" />
+				</div> 
+		
+			</div>
+		</td>
+		
+		<td>
+			<table border ="0">
+				<tr>
+					<td colspan="2" height="80">
+						<button id="topBtn" onclick="myMove('up')" style="width:100%;background-color: #E3E1B8;padding:40px;">UP</button>
+					</td>
+				</tr>
+				<tr>
+					<td height="40">
+						<button id="leftBtn" onclick="myMove('left')">LEFT</button>
+					</td>
+					<td height="40">
+						<button id="rightBtn" onclick="myMove('right')">RIGHT</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" height="60">
+						<button id="bottomBtn" onclick="myMove('down')" style="width:100%;background-color: #ffffcc;padding:25px;">DOWN</button>
+					</td>
+				</tr>
+			</table>
+	
+		</td>
+	</tr>	
+</table>
+
+<script src="assets/js/gameboy.js"></script>
+<script src="assets/js/traps.js"></script>
+</body>
+</html>

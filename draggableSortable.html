@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Draggable + Sortable</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <script src="jquery-1.10.2.js"></script>
+  <script src="jquery-ui.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+  li { margin: 5px; padding: 5px; width: 150px; }
+  
+   #sortable1, #sortable2 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+  
+  </style>
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable({
+      revert: true
+    });
+    $( "#draggable" ).draggable({
+      connectToSortable: "#sortable",
+      helper: "clone",
+      revert: "invalid"
+    });
+    $( "ul, li" ).disableSelection();
+  });
+  
+  </script>
+  
+  <script>
+	function addDown() {
+		var x = document.getElementById("sortable").innerHTML;
+		var y ="<li class='ui-state-default' id='draggable'>Down</li>";
+		document.getElementById("sortable").innerHTML = x + y;
+	}
+	
+	function addUp() {
+		var x = document.getElementById("sortable").innerHTML;
+		var y ="<li class='ui-state-default' id='draggable'>Up</li>";
+		document.getElementById("sortable").innerHTML = x + y;
+	}
+	
+	function addLeft() {
+		var x = document.getElementById("sortable").innerHTML;
+		var y ="<li class='ui-state-default' id='draggable'>Left</li>";
+		document.getElementById("sortable").innerHTML = x + y;	
+	}
+	
+	function addRight() {
+		var x = document.getElementById("sortable").innerHTML;
+		var y ="<li class='ui-state-default' id='draggable'>Right</li>";
+		document.getElementById("sortable").innerHTML = x + y;	
+	}
+	
+	
+	$(function() {
+    $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  });
+	
+  </script>
+  
+</head>
+<body>
+ 
+<ul>
+  <li id="draggable" class="ui-state-highlight">
+ Drag me down</li>
+  <li id="draggable" class="ui-state-highlight">
+  <input type="submit" id="addDown" value="Up" onclick="addUp();" /></li>
+  <li id="draggable" class="ui-state-highlight">
+  <input type="submit" id="addDown" value="Left" onclick="addLeft();" />
+  <input type="submit" id="addDown" value="Right" onclick="addRight();" /></li>
+  <li id="draggable" class="ui-state-highlight">
+  <input type="submit" id="addDown" value="Down" onclick="addDown();" /></li>
+</ul>
+ 
+<ul id="sortable2">
+
+<ul id="draggable" style="background-color:green">
+	<li class="ui-state-default" id="draggable">
+		While(i< <input type="input" id="enterValue" value="5" style="width:20px" /> ) {
+		<ul id="sortable" style="height:200px">
+			<li class="ui-state-default" id="draggable">this is right</li>
+		</ul>
+		}
+	</li>
+</ul>
+</ul>
+ 
+
+ <ul id="sortable1" class="connectedSortable">
+  <li class="ui-state-default">Item 1</li>
+  <li class="ui-state-default">Item 2</li>
+  <li class="ui-state-default">Item 3</li>
+  <li class="ui-state-default">Item 4</li>
+  <li class="ui-state-default">Item 5</li>
+</ul>
+ 
+<ul id="sortable2" class="connectedSortable">
+  <li class="ui-state-highlight">Item 1</li>
+  <li class="ui-state-highlight">Item 2</li>
+  <li class="ui-state-highlight">Item 3</li>
+  <li class="ui-state-highlight">Item 4</li>
+  <li class="ui-state-highlight">Item 5</li>
+</ul>
+ 
+ 
+</body>
+</html>

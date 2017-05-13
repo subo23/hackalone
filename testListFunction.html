@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pokemon JS</title>
+  <link rel="stylesheet" href="/jquery-ui.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/gameboy.css" />
+  <link rel="stylesheet" href="assets/css/dragAnddrop.css" />
+  <!--<link rel="stylesheet" href="assets/css/styles.css" />--><!-- css is clashin-->
+  <script src="jquery-1.10.2.js"></script>
+  <script src="jquery-ui.js"></script>
+
+	
+  <script>
+  $(function() {
+    $( "ul.droptrue" ).sortable({
+      connectWith: "ul"
+    });
+ 
+    $( "ul.dropfalse" ).sortable({
+      connectWith: "ul",
+      dropOnEmpty: false
+    });
+ 
+    $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
+  });
+  </script>
+  
+    <script src="assets/js/gameboy.js"></script>
+	<script src="assets/js/traps.js"></script>
+	<script src="assets/js/delay.js"></script>
+	<!--<script src="assets/js/jquery.min.js"></script>--><!--script is clashing with others-->
+    <script src="assets/js/jquery.generateFile.js"></script>
+    <script src="assets/js/script.js"></script>
+ 
+ <script type="text/javascript">
+	function myFunction() {
+		var num = document.getElementById("sortable2").getElementsByTagName("li");
+		var i;
+		var move;
+		var time=0;
+		
+		for(i=0;i< num.length;i++) {
+			// call "direction" function
+			move = num[i].innerHTML.toLowerCase().trim();
+			delay(move,time+=500);
+		}		
+	}
+  </script>
+  
+</head>
+
+<body onload="buildTraps();">
+
+
+
+
+<table border="1">
+	<tr> 
+	
+<!--R1C1-->
+<td>
+
+<table border="1">
+	<tr height="5%">
+		<td colspan="2">
+				<label id="message" style="color:black;">Poke-Code</label>
+			<p>
+				<button id="resetBtn" onclick="resetPosition()">Reset</button>
+			</p> 
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+			<div id ="container">
+				<div id ="animate" style="left:0px;top:0px;"><img id="sourceImg" src="assets/img/Pokeball.png" width="50px" height="50px" /></div>
+				
+				<div id="walls"></div>
+				
+				<div id="destination" style="left:50px;top:50px;">
+						<img id ="destImg" src="assets/img/Squirtle.png" width="250px" height="250px" onclick="changeSize('50px','50px');" />
+				</div> 
+		
+			</div>
+		</td>
+		
+		<td>
+			<table border ="0">
+				<tr>
+					<td colspan="2" height="80">
+						<button id="topBtn" onclick="myMove('up')" style="width:100%;background-color: #E3E1B8;padding:40px;">UP</button>
+					</td>
+				</tr>
+				<tr>
+					<td height="40">
+						<button id="leftBtn" onclick="myMove('left')">LEFT</button>
+					</td>
+					<td height="40">
+						<button id="rightBtn" onclick="myMove('right')">RIGHT</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" height="60">
+						<button id="bottomBtn" onclick="myMove('down')" style="width:100%;background-color: #ffffcc;padding:25px;">DOWN</button>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	
+	<tr height="50px">
+		<td colspan="2">
+			<form action="./" method="post">
+				<textarea></textarea>
+				<a href="#" class="blueButton" id="download">Enter</a>
+			</form>	
+		</td>
+	</tr>
+	
+	</table>
+</td>	
+
+	<!--R1C2-->
+		<td>
+			<table>
+				<tr>
+					<td colspan="2">
+						Drag controls('up/down/left/right') to the list on the left<br>
+						Order is <b>important</b>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+					<ul id="sortable1" class="droptrue" bgcolor="black" style="list-style-type: square;">
+					<li class="ui-state-default" style="color:red">Up</li>
+					<li class="ui-state-default" style="color:red">Up</li>
+					<li class="ui-state-default" style="color:red">Up</li>
+					<li class="ui-state-default" style="color:blue">Down</li>
+					<li class="ui-state-default" style="color:blue">Down</li> 
+					<li class="ui-state-default" style="color:blue">Down</li>
+					<li class="ui-state-default" style="color:green">Left</li>
+					<li class="ui-state-default" style="color:green">Left</li>
+					<li class="ui-state-default" style="color:green">Left</li>
+					<li class="ui-state-default" style="color:orange">Right</li>
+					<li class="ui-state-default" style="color:orange">Right</li>
+					<li class="ui-state-default" style="color:orange">Right</li>
+					</ul>
+					
+					</td>
+					<td align="top"> 
+					<ul id="sortable2" class="dropfalse" style="list-style-type: decimal;">
+					<li class="ui-state-default" style="color:orange">Right</li>
+					</ul>
+					</td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td colspan="1">
+						<button id="Enter" onclick="myFunction()">Run</button>
+					</td>
+				</tr> 
+
+			</table> 
+		</td>
+	</tr>	
+	
+</table>
+
+ 
+ 
+<br style="clear:both">
+ 
+</body>
+</html>
